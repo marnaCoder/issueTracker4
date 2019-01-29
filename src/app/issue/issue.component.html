@@ -1,0 +1,53 @@
+<form (submit)="onSubmit(form)" #form="ngForm">
+  <div class="description">
+      <label for="description">Enter a description:</label><br>
+      <textarea rows="8"name="description" #description="ngModel" [(ngModel)]="form.value.description" required minlength="10"></textarea>
+      <p class="error" *ngIf="(!description.valid && description.touched)">Please enter description of min of 10 words</p>
+  </div>
+
+  <br><br>
+
+  <div class="flex-container">
+    <div>
+        <label for="serverity">serverity:</label>
+        <select #serverity="ngModel" name="serverity" [(ngModel)]="form.value.serverity" required>
+          <option value="Minor">Minor</option>
+          <option value="Major">Major</option>
+          <option value="Critical">Critical</option>
+        </select>
+        <p class="error" *ngIf="!serverity.valid && form.touched">Select  valid serverity</p>
+    </div>
+    <div>
+        <label for="status">status:</label>
+        <select #status="ngModel" name="status" [(ngModel)]="form.value.status" required>
+          <option value="Open">Open</option>
+          <option value="In-progress">In-progress</option>
+          <option value="Closed">Closed</option>
+        </select>
+        <p class="error" *ngIf="!status.valid && form.touched">Select valid  status</p>
+    </div>
+
+
+  </div>
+
+  <br><br>
+  <div  class="flex-container">
+    <div>
+        <label for="createdDate">createdDate:</label>
+  <input type="date" #createdDate="ngModel" name="createdDate" [(ngModel)]="form.value.createdDate" required>
+  <p class="error" *ngIf="!createdDate.valid && form.touched"> Select vaild Date</p>
+    </div>
+    <div>
+
+  <label for="resolvedDate">resolvedDate:</label>
+  <input type="date" #resolvedDate="ngModel" name="resolvedDate" [(ngModel)]="form.value.resolvedDate" required>
+  <!-- <p class="error" *ngIf="!resolvedDate.valid && resolvedDate.touched"> Select vaild Date</p> -->
+
+    </div>
+  </div>
+  <br>
+  <div style="text-align: center">
+      <button type="submit" [disabled]="!description.valid || !serverity.valid || !status.valid || !createdDate.valid">Submit<span class="tooltip">Please enter the details.</span></button>
+  </div>
+
+</form>

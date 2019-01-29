@@ -1,0 +1,104 @@
+<br><br><br>
+<div class="flex-container">
+  <div>
+      <input type="number" [(ngModel)]="filterId" placeholder="Search By Id">
+
+  </div>
+  <div>
+      <label for="serverity">serverity search:</label>
+      <select  name="serverity" [(ngModel)]="filterServerity" >
+        <option value="Minor">Minor</option>
+        <option value="Major">Major</option>
+        <option value="Critical">Critical</option>
+      </select>
+  </div>
+  <div>
+      <label for="status">status search:</label>
+      <select name="status" [(ngModel)]="filterStatus" >
+        <option value="Open">Open</option>
+        <option value="In-progress">In-progress</option>
+        <option value="Closed">Closed</option>
+      </select>
+  </div>
+</div>
+
+
+        <br><br>
+        <div class="flex-container">
+          <div>
+              <label for="createdDate"> Search by Created-Date:</label>
+              <input type="date" name="createdDate" [(ngModel)]="filterCreatedDate" required>
+          </div>
+
+          <div>
+              <label for="resolvedDate">Search by Resolved-date:</label>
+              <input type="date" name="resolvedDate" [(ngModel)]="filterResolvedDate" required>
+          </div>
+
+        </div>
+
+<br><br>
+    <button type="button"   (click)="onDeleteMany()" [disabled]="idArray.length === 0" style="height:40px;font-size: 30px;
+    background-color: rgb(247, 242, 242);color:red;border-radius: 5px;float: left;">Delete</button>
+
+<br><br><br>
+<div style="border: 1px solid black">
+    <h3 style="text-align: center">Customize your fields </h3>
+  <label for="customizeID">ID:</label>
+  <select  name="customizeID" [(ngModel)]="customizeID">
+    <option value='true' selected>true</option>
+    <option value='false'>false</option>
+  </select>  &nbsp;&nbsp;&nbsp;<label for="customizeSTATUS">STATUS:</label>
+  <select  name="customizeSTATUS" [(ngModel)]="customizeSTATUS">
+    <option value='true' selected>true</option>
+    <option value='false'>false</option>
+  </select>  &nbsp;&nbsp;&nbsp;<label for="customizeSERVERITY">SERVERITY:</label>
+  <select  name="customizeSERVERITY" [(ngModel)]="customizeSERVERITY">
+    <option value='true' selected>true</option>
+    <option value='false'>false</option>
+  </select>  &nbsp;&nbsp;&nbsp;<br><br><br><label for="customizeCREATED-DATE">CREATED-DATE:</label>
+  <select  name="customizeCREATED_DATE" [(ngModel)]="customizeCREATED_DATE">
+    <option value='true' selected>true</option>
+    <option value='false'>false</option>
+  </select>  &nbsp;&nbsp;&nbsp;<label for="customizeRESOLVED-DATE">RESOLVED-DATE:</label>
+  <select  name="customizeRESOLVED_DATE" [(ngModel)]="customizeRESOLVED_DATE">
+    <option value='true' selected>true</option>
+    <option value='false'>false</option>
+  </select>  &nbsp;&nbsp;&nbsp;<label for="customizeDESCRIPTION">DESCRIPTION:</label>
+  <select  name="customizeDESCRIPTION" [(ngModel)]="customizeDESCRIPTION">
+    <option value='true' selected>true</option>
+    <option value='false'>false</option>
+
+  </select>
+  <br><br>
+</div>
+
+<br><br>
+
+<li>
+  <ul *ngFor="let issue of issues | filter:filterId:filterServerity:filterStatus:filterCreatedDate:filterResolvedDate">
+    <!-- <p><input type="checkbox" (click)="saveIdToBeDeleted(issue.id)" >ID:{{issue.id}}   &nbsp;&nbsp;&nbsp;   STATUS:{{issue.status}} &nbsp;&nbsp;&nbsp;SERVERITY:{{issue.serverity}} &nbsp;&nbsp;&nbsp;
+      CREATED-DATE:{{issue.createdDate}} &nbsp;&nbsp;&nbsp;RESOLVED-DATE:{{issue.resovledDate}} &nbsp;&nbsp;&nbsp;
+      <button type="button" class="delete" (click)="delete(issue.id)">Delete</button>
+    <button type="button" class="update" (click)="update(issue.id)">Update</button></p>
+    <p>DESCRIPTION:{{issue.description}}</p> -->
+
+    <table>
+        <input type="checkbox" (click)="saveIdToBeDeleted(issue.id)">
+      <tr><th *ngIf="customizeID=='true'">ID</th>
+        <th *ngIf="customizeSTATUS=='true'">STATUS</th>
+        <th *ngIf="customizeSERVERITY=='true'">SERVERITY</th>
+        <th *ngIf="customizeCREATED_DATE=='true'">CREATED-DATE</th>
+        <th *ngIf="customizeRESOLVED_DATE=='true'">RESOLVED-DATE</th></tr>
+      <tr><td *ngIf="customizeID=='true'">{{issue.id}}</td>
+        <td *ngIf="customizeSTATUS=='true'">{{issue.status}}</td>
+        <td *ngIf="customizeSERVERITY=='true'">{{issue.serverity}}</td>
+        <td *ngIf="customizeCREATED_DATE=='true'">{{issue.createdDate}}</td>
+        <td *ngIf="customizeRESOLVED_DATE=='true'">{{issue.resolvedDate}}</td></tr>
+    </table>
+    <button type="button" class="delete" (click)="delete(issue.id)">Delete</button>
+    <button type="button" class="update" (click)="update(issue.id)">Update</button>
+    <p style="float:left"  *ngIf="customizeDESCRIPTION=='true'">DESCRIPTION:{{issue.description}}</p>
+  </ul>
+
+</li>

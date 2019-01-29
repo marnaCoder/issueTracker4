@@ -1,0 +1,80 @@
+form{
+  width: 100%;
+  margin: auto;
+  margin-top:10%;
+  background-color: rgb(233, 230, 230);
+}
+label{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(0, 0, 3)
+}
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+}
+select{
+  width: 150px;
+  background-color: rgb(248, 240, 225)
+
+}
+button{
+  width:100px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(0, 5, 1);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+
+}
+textarea{
+  border-radius: 5px;
+  border-color: rgb(245, 231, 206);
+  font-size: 15px;
+  width: 99%;
+  background-color: rgb(248, 240, 225)
+}
+input[type="date"]{
+  border-radius: 5px;
+  background-color: rgb(248, 240, 225)
+
+
+}
+.error{
+  color: rgb(247, 131, 131);
+  margin-top: -2px;
+  font-size: 15px;
+
+}
+button[disabled]{
+position: relative;
+}
+.tooltip{
+visibility: hidden;
+background-color: rgb(109, 106, 106);
+color: rgb(54, 53, 53);
+left:-50%;
+bottom: -100%;
+border-radius: 10px;
+width: 200px;
+position: absolute;
+text-align: center;
+padding: 5px;
+z-index: 1;
+}
+.tooltip::after{
+  content: "";
+  position: absolute;
+  top: -45%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgb(109, 106, 106) transparent;
+}
+button[disabled]:hover .tooltip{
+  visibility: visible;
+  }
+

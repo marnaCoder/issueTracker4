@@ -1,0 +1,35 @@
+.header{
+  width: 100%;
+  margin: 0;
+  border: none;
+  height: 100px;
+  position: relative;
+  top:-10px;
+  background-color: rgb(233, 230, 230);
+}
+.add{
+  float:left;
+  background-color: transparent;
+  font-size: 25px;
+  margin: auto;
+  font-weight: bolder;
+  margin-left: 10px;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+}
+.view{
+  float: right;
+  background-color: transparent;
+  font-size: 25px;
+  margin: auto;
+  font-weight: bolder;
+  border: none;
+  margin-right: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+
+
+
+
+}
